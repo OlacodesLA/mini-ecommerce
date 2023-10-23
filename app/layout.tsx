@@ -41,10 +41,6 @@ export default function RootLayout({
               // Default options for specific types
               success: {
                 duration: 3000,
-                theme: {
-                  primary: "green",
-                  secondary: "black",
-                },
               },
             }}
           />

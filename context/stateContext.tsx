@@ -39,20 +39,24 @@ interface CartProviderProps {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  // Load cart data from localStorage on component initialization
-  const initialCart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const [cart, setCart] = useState<CartItem[]>(initialCart);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
 
-  // Function to save the cart data to localStorage
-  const saveCartToLocalStorage = (cartData: CartItem[]) => {
-    localStorage.setItem("cart", JSON.stringify(cartData));
-  };
-
-  // Initialize the cart with the loaded data from localStorage
   useEffect(() => {
-    setCart(initialCart);
+    // Check if localStorage is available (client-side)
+    if (typeof window !== "undefined") {
+      // Load cart data from localStorage on component initialization
+      const initialCart = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCart(initialCart);
+    }
   }, []);
+
+  const saveCartToLocalStorage = (cartData: CartItem[]) => {
+    // Check if localStorage is available (client-side)
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cartData));
+    }
+  };
 
   const addToCart = (product: CartItem) => {
     const existingProductIndex = cart.findIndex(

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TextField from "../inputs/text";
 import { useFormik } from "formik";
 import { shippingSchema } from "@/schemas";
 import { DefaultButton } from "../button";
 import PreviousButton from "../button/prevButton";
+import { CartContext } from "@/context/stateContext";
 
 type Props = {
   onNextStep: () => void;
@@ -13,6 +14,7 @@ type Props = {
 const ShippingInfo = ({ onNextStep, onPrevStep }: Props) => {
   const [isFormValid, setFormValid] = useState(false);
 
+  const { cart } = useContext(CartContext)!;
   // Load form data from localStorage on component mount
   useEffect(() => {
     const savedFormData = localStorage.getItem("shippingFormData");
@@ -47,7 +49,7 @@ const ShippingInfo = ({ onNextStep, onPrevStep }: Props) => {
     <form onSubmit={formik.handleSubmit} className="w-full flex flex-col gap-5">
       <TextField
         type="text"
-        placeholder="Address"
+        placeholder="Delivery Address"
         name="address"
         handleChange={formik.handleChange}
         handleBlur={formik.handleBlur}

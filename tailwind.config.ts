@@ -16,6 +16,9 @@ const config: Config = {
       fontFamily: {
         charm: ["Charm", "cursive"],
       },
+      colors: {
+        primary: "#D8B982",
+      },
     },
     screens: {
       ms: "500px",

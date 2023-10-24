@@ -2,6 +2,7 @@
 import React from "react";
 import { useContext } from "react";
 import { CartContext } from "@/context/stateContext";
+import Link from "next/link";
 
 type Props = {};
 
@@ -26,9 +27,11 @@ const Shop = (props: Props) => {
           const { name, image, price } = item;
           return (
             <div key={name} className="my-3 cursor-pointer group ">
-              <div className="rounded-full text-lg flex justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-pink-300">
-                {name}
-              </div>
+              <Link href={`/shop/${name.toLowerCase()}`}>
+                <div className="rounded-full text-lg flex justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-pink-300">
+                  {name}
+                </div>
+              </Link>
               <div className="text-center mt-2">
                 <p>₦{price}</p>
                 <button
@@ -53,6 +56,13 @@ const Shop = (props: Props) => {
 };
 
 export default Shop;
+
+export function findPriceByName(productName: any) {
+  const product = products.find(
+    (product) => product.name.toLowerCase() === productName
+  );
+  return product ? product.price : null;
+}
 
 const product = [
   {

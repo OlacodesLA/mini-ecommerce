@@ -100,7 +100,7 @@ const PaymentInfo = ({ onNextStep, onPrevStep }: Props) => {
           click={() => onPrevStep()}
           label="Previous"
         />
-        <DefaultButton type="submit" label="Finish" />
+        <DefaultButton type="submit" label="Make Payment" />
       </div>
     </form>
   );

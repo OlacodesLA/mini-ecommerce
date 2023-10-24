@@ -14,6 +14,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
     cart,
     totalQuantity,
     clearCart,
+
     removeFromCart,
     incrementQuantity,
     decrementQuantity,
@@ -180,6 +181,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
           </p>
           <Link href="/checkout">
             <button
+              onClick={() => setShowCart(false)}
               type="button"
               className="w-full button-theme bg-theme-cart text-white"
             >

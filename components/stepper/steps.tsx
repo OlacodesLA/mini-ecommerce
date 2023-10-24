@@ -1,18 +1,21 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { TiTick } from "react-icons/ti";
 import CustomerInfo from "../customerInfo";
 import PaymentInfo from "../paymentInfo";
 import ShippingInfo from "../shippingInfo";
+import { CartContext } from "@/context/stateContext";
 
 const isBrowser = typeof window !== "undefined"; // Check if the code is running in the browser
 
 const Stepper: React.FC = () => {
-  const steps = ["Customer Info", "Shipping Info", "Payment"];
+  const steps = ["Customer Info", "Shipping Info", "Payment Info"];
   const [complete, setComplete] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState<number>(
     isBrowser ? getCurrentStepFromLocalStorage() : 1
   );
+
+  const { cart } = useContext(CartContext)!;
 
   function getCurrentStepFromLocalStorage() {
     if (isBrowser) {

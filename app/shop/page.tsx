@@ -57,13 +57,6 @@ const Shop = (props: Props) => {
 
 export default Shop;
 
-export function findPriceByName(productName: any) {
-  const product = products.find(
-    (product) => product.name.toLowerCase() === productName
-  );
-  return product ? product.price : null;
-}
-
 const product = [
   {
     name: "Keresimesi",

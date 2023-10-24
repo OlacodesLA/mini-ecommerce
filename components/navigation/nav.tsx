@@ -12,7 +12,6 @@ import useWindowSize from "@/utils/size";
 type Props = {};
 
 const Nav = (props: Props) => {
-  const [isOpen, setIsOpen] = useState(false);
   const { showCart, setShowCart, totalQuantity } = useContext(CartContext)!;
 
   const { isTablet } = useWindowSize({
@@ -53,12 +52,6 @@ const Nav = (props: Props) => {
               </div>
             </div>
           </div>
-          <div
-            onClick={() => setIsOpen(true)}
-            className="md:hidden flex cursor-pointer"
-          >
-            <TbMenuDeep className="text-2xl" />
-          </div>
         </div>
         <div
           className={`fixed top-0 left-0 right-0 bottom-0 blur-effect-theme transition-all duration-500 w-full h-auto opacity-100 z-[250] overflow-auto  ${
@@ -79,11 +72,9 @@ const Nav = (props: Props) => {
         </div>
       </nav>
       {isTablet && (
-        
-          <div className="relative flex lg:hidden">
-            <MobileNavigation />
-          </div>
-    
+        <div className="relative flex lg:hidden">
+          <MobileNavigation />
+        </div>
       )}
     </>
   );

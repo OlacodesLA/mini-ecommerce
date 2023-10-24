@@ -5,6 +5,7 @@ import Image from "next/image";
 import money from "@/utils/money";
 import { CartContext } from "@/context/stateContext";
 import Secure from "@/components/secure";
+import { productsWithData } from "@/utils/products";
 
 export default function Checkout() {
   const { cart } = useContext(CartContext)!;
@@ -25,6 +26,13 @@ export default function Checkout() {
           {cart &&
             cart.map((item) => {
               const { name, quantity, price } = item;
+              const product = productsWithData.find(
+                (product) => product.name.toLowerCase() === name.toLowerCase()
+              );
+
+              const foundProductNames = product?.items.map(
+                (product: any) => product.name
+              );
               return (
                 <div
                   key={name}
@@ -35,7 +43,7 @@ export default function Checkout() {
                       className={`relative rounded-lg h-20 w-[200px] hover:scale-105 transition-all duration-75 ease-in-out grid items-center`}
                     >
                       <div className="w-full">
-                        <div className=" bg-pink-300 font-bold flex w-full justify-center items-center lg:h-[70px]  rounded-lg object-cover ">
+                        <div className=" bg-pink-300 font-bold flex w-full justify-center items-center h-[70px]  rounded-lg object-cover ">
                           {name}
                         </div>
                       </div>
@@ -47,9 +55,15 @@ export default function Checkout() {
                     <div className="grid items-center w-full gap-4">
                       <div className="grid items-center w-full leading-none">
                         <div className="flex items-start justify-between w-full">
-                          <h1 className="font-medium text-sm tl:text-lg text-slate-900 lg:text-sm">
-                            {item.name}
-                          </h1>
+                          <div className="">
+                            <h1 className="font-medium text-sm tl:text-lg text-slate-900 lg:text-sm">
+                              {item.name}
+                            </h1>
+                            <p className=" text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
+                              {" "}
+                              {foundProductNames?.join(", ")}{" "}
+                            </p>
+                          </div>
                           <div className="flex flex-col justify-between h-full ">
                             <div className="flex justify-center">
                               <div className="w-7 h-7 flex items-center  rounded-lg justify-center border-gray-400 border">

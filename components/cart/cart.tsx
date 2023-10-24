@@ -6,6 +6,7 @@ import { IoTrash } from "react-icons/io5";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { default as money } from "../../utils/money";
 import Link from "next/link";
+import { productsWithData } from "@/utils/products";
 
 type Props = {};
 
@@ -19,6 +20,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
     incrementQuantity,
     decrementQuantity,
   } = useContext(CartContext)!;
+
   return (
     <div className="bg-white h-screen">
       <div className="py-2 px-2">
@@ -60,6 +62,14 @@ const Cart = ({ showCart, setShowCart }: any) => {
           {cart &&
             cart.map((item) => {
               const { name, quantity, price } = item;
+              const product = productsWithData.find(
+                (product) => product.name.toLowerCase() === name.toLowerCase()
+              );
+
+              const foundProductNames = product?.items.map(
+                (product: any) => product.name
+              );
+              console.log(foundProductNames);
               return (
                 <div key={name} className=" w-full px-1 tl:px-5 lg:mb-5 mb-10">
                   <div className="flex w-full items-start gap-5">
@@ -78,15 +88,22 @@ const Cart = ({ showCart, setShowCart }: any) => {
                     <div className="grid items-center w-full gap-4">
                       <div className="grid items-center w-full leading-none">
                         <div className="flex items-start justify-between w-full">
-                          <h1 className="font-medium text-base tl:text-lg text-slate-900 lg:text-sm">
-                            {item.name}
-                          </h1>
+                          <div className="">
+                            <h1 className="font-medium text-base tl:text-lg text-slate-900 lg:text-sm">
+                              {item.name}
+                            </h1>
+                            <p className=" text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
+                              {" "}
+                              {foundProductNames?.join(", ")}{" "}
+                            </p>
+                          </div>
+
                           <h1 className="text-base tl:text-lg text-slate-900 font-medium">
                             &#x20A6;{money(price * quantity)}
                           </h1>
                         </div>
                       </div>
-                      <div className="flex justify-between w-full mt-14">
+                      <div className="flex justify-between w-full pt-2">
                         {/* <QtyAdjust mycolor cartQtyAdjust item={item} /> */}{" "}
                         <div className="flex items-center gap-5 ">
                           <div

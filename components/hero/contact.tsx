@@ -9,7 +9,7 @@ const Contact = (props: Props) => {
       <div className="inline-block  px-2 py-1 font-semibold bg-pink-200 rounded-full">
         <div className="flex flex-wrap justify-start items-center lg:-m-1">
           <div className="w-auto p-1">
-            <Link className="text-sm " href="/shop">
+            <Link className="text-sm " href="/contact">
               &#x1F44B; Get in touch with us.
             </Link>
           </div>

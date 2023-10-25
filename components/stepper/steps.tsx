@@ -5,6 +5,8 @@ import CustomerInfo from "../customerInfo";
 import PaymentInfo from "../paymentInfo";
 import ShippingInfo from "../shippingInfo";
 import { CartContext } from "@/context/stateContext";
+import axios from "axios";
+import { paymentAPI } from "@/axios/endpoints/payment.endpoint";
 
 const isBrowser = typeof window !== "undefined"; // Check if the code is running in the browser
 
@@ -15,7 +17,7 @@ const Stepper: React.FC = () => {
     isBrowser ? getCurrentStepFromLocalStorage() : 1
   );
 
-  const { cart } = useContext(CartContext)!;
+  const { totalPrice } = useContext(CartContext)!;
 
   function getCurrentStepFromLocalStorage() {
     if (isBrowser) {
@@ -24,6 +26,29 @@ const Stepper: React.FC = () => {
     }
     return 1; // Default value for server-side rendering
   }
+
+  const makePayment = () => {
+    const shippingData = localStorage.getItem("shippingFormData") || "";
+    const customerData = localStorage.getItem("customerFormData") || "";
+
+    const shipping = JSON.parse(shippingData);
+    const customer = JSON.parse(customerData);
+
+    paymentAPI(customer, shipping, totalPrice)
+      .then((response: any) => {
+        const { serverResponse, error } = response;
+        console.log(serverResponse);
+
+        if (!error) {
+          window.location.href = serverResponse?.link;
+        } else {
+          return;
+        }
+      })
+      .catch((error) => {
+        console.error("Payment error:", error);
+      });
+  };
 
   useEffect(() => {
     if (isBrowser) {
@@ -79,7 +104,11 @@ const Stepper: React.FC = () => {
         </div>
         <div className="w-full sm:max-w-lg mx-auto">
           {currentStep === 3 && (
-            <PaymentInfo onNextStep={onNextStep} onPrevStep={onPrevStep} />
+            <PaymentInfo
+              onNextStep={onNextStep}
+              onPrevStep={onPrevStep}
+              makePayment={makePayment}
+            />
           )}
         </div>
       </div>

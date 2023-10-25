@@ -27,6 +27,7 @@ interface CartContextType {
   showCart: boolean;
   setShowCart: Dispatch<SetStateAction<boolean>>;
   clearCart: () => void;
+  totalPrice: number;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -128,6 +129,10 @@ export function CartProvider({ children }: CartProviderProps) {
   };
 
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.quantity * item.price,
+    0
+  );
 
   return (
     <CartContext.Provider
@@ -141,6 +146,7 @@ export function CartProvider({ children }: CartProviderProps) {
         setShowCart,
         showCart,
         clearCart,
+        totalPrice,
       }}
     >
       {children}

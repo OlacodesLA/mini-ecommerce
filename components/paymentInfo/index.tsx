@@ -8,9 +8,10 @@ import PreviousButton from "../button/prevButton";
 type Props = {
   onNextStep: () => void;
   onPrevStep: () => void;
+  makePayment: () => void;
 };
 
-const PaymentInfo = ({ onNextStep, onPrevStep }: Props) => {
+const PaymentInfo = ({ onNextStep, onPrevStep, makePayment }: Props) => {
   const [isFormValid, setFormValid] = useState(false);
 
   // Load form data from localStorage on component mount
@@ -41,8 +42,9 @@ const PaymentInfo = ({ onNextStep, onPrevStep }: Props) => {
     onSubmit: (values) => {
       if (isFormValid) {
         // Save form data to localStorage
-        localStorage.setItem("customerFormData", JSON.stringify(values));
-        onNextStep(); // Call the function to navigate to the next step
+        makePayment();
+        localStorage.setItem("paymentFormData", JSON.stringify(values));
+        // onNextStep();
       }
     },
     validate: (values) => {

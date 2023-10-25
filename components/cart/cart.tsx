@@ -165,15 +165,13 @@ const Cart = ({ showCart, setShowCart }: any) => {
             })}
         </div>
         {totalQuantity === 0 && (
-          <div className="w-full h-full items-center flex justify-center pt-20">
+          <div className="w-full h-full items-center flex flex-col justify-center pt-20">
             <div className="">
-              <div className="">
-                <img src="/empty.png" className="w-[300px]" alt="" />
-              </div>
-              <p className="text-best -translate-y-8 font-semibold text-center ">
-                Your Shopping Bag Is Empty
-              </p>
+              <img src="/bag.png" className="w-[80px]" alt="" />
             </div>
+            <p className="text-best mt-4 font-semibold text-center ">
+              Your Shopping Bag Is Empty
+            </p>
           </div>
         )}
       </div>

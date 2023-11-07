@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { verifyAPI } from "@/axios/endpoints/payment.endpoint";
+import { emailAPI, verifyAPI } from "@/axios/endpoints/payment.endpoint";
 import { Bars } from "react-loader-spinner";
+import { doc, setDoc } from "firebase/firestore";
+import { salesCollectionRef } from "@/utils";
+import { formattedCurrentDateTime } from "@/utils";
 
 const VerifyPage = () => {
   const searchParams = useSearchParams();
@@ -10,6 +13,7 @@ const VerifyPage = () => {
   const [cancelled, setCancelled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [customerData, setCustomerData] = useState({});
+  const [totalPrice, setTotalPrice] = useState("");
 
   useEffect(() => {
     const getQueryParam = (paramName: string) => {
@@ -27,28 +31,94 @@ const VerifyPage = () => {
     const tx_ref = getQueryParam("tx_ref");
     const transaction_id = getQueryParam("transaction_id");
 
+    const customerInfo = JSON.parse(
+      localStorage.getItem("customerFormData") || "{}"
+    );
+    const shippingInfo = JSON.parse(
+      localStorage.getItem("shippingFormData") || "{}"
+    );
+    const paymentInfo = JSON.parse(
+      localStorage.getItem("paymentFormData") || "{}"
+    );
+    const cartInfo = JSON.parse(localStorage.getItem("cart") || "{}");
+
+    console.log({ ...customerInfo, ...shippingInfo, ...paymentInfo });
+
+    const createSale = async (price: number) => {
+      const userDoc = doc(salesCollectionRef, tx_ref);
+      // Set the user
+      await setDoc(userDoc, {
+        customerInfo,
+        shippingInfo,
+        paymentInfo,
+        cartInfo,
+        status: status,
+        createdAt: formattedCurrentDateTime,
+        totalPrice: price,
+      });
+      setSuccess(true);
+    };
+
+    const sendEmail = async (price: number) => {
+      try {
+        const createdAt = formattedCurrentDateTime;
+        const totalPrice = price;
+        emailAPI(
+          customerInfo,
+          shippingInfo,
+          totalPrice,
+          cartInfo,
+          createdAt
+        ).then((response: any) => {
+          console.log(response);
+        });
+      } catch (error) {}
+      setSuccess(true);
+    };
+
     // You can perform actions based on these values
     if (status === "completed" || status === "successful") {
       // Payment was completed, handle accordingly
       try {
-        verifyAPI({ transaction_id }).then((response: any) => {
-          console.log("Verification response", response);
-          const { serverResponse, error } = response;
-          if (!error) {
-            const { data } = serverResponse;
-            setCustomerData(data.meta);
-            setSuccess(true);
-            setIsLoading(false);
-          } else {
-            setSuccess(false);
-            setIsLoading(false);
-          }
-        });
+        verifyAPI({
+          transaction_id,
+        })
+          .then((response: any) => {
+            console.log("Verification response", response);
+            const { serverResponse, error } = response;
+            if (!error) {
+              if (serverResponse === undefined) {
+                setSuccess(false);
+              } else {
+                const { data } = serverResponse;
+                setCustomerData(data.meta);
+                if (data.amount) {
+                  createSale(data.amount);
+                  sendEmail(data.amount);
+                }
+                setIsLoading(false);
+                setSuccess(true);
+                console.log(data);
+              }
+
+              console.log(error);
+            } else {
+              setSuccess(false);
+            }
+          })
+          // .then(() => {
+          //   createSale();
+          //   setIsLoading(false);
+          // })
+          .catch((err) => {
+            console.log(err);
+          });
       } catch (error) {
         console.error(error);
       }
     } else if (status === "cancelled") {
       // Payment was not completed, handle accordingly
+
       setCancelled(true);
       setSuccess(false);
       setIsLoading(false);

@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { HiHome, HiOutlineHome, HiUser, HiOutlineUser } from "react-icons/hi";
 import { AiOutlineShop, AiFillShop } from "react-icons/ai";
+import { LuPackagePlus } from "react-icons/lu";
 import {
   HiChatBubbleOvalLeftEllipsis,
   HiOutlineChatBubbleOvalLeftEllipsis,
@@ -10,7 +11,7 @@ import {
 import { usePathname } from "next/navigation";
 
 type Props = {};
-const activeIconClass = "text-2xl text-pink-600 ";
+const activeIconClass = "text-2xl text-green-900 ";
 const iconClass = "text-2xl text-gray-800";
 const MobileNavigation = (props: Props) => {
   const pathname = usePathname();
@@ -53,6 +54,12 @@ export const Links = [
     href: "/shop",
     activeIcon: <AiFillShop className={activeIconClass} />,
     icon: <AiOutlineShop className={iconClass} />,
+  },
+  {
+    name: "Pack",
+    href: "/pack",
+    activeIcon: <LuPackagePlus className={activeIconClass} />,
+    icon: <LuPackagePlus className={iconClass} />,
   },
   {
     name: "Contact",

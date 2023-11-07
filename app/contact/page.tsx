@@ -8,6 +8,7 @@ const Contact = (props: Props) => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+
   return (
     <div>
       <div className="my-5">
@@ -15,7 +16,7 @@ const Contact = (props: Props) => {
       </div>
       <section className="">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-          <form action="#" className="space-y-8">
+          <form className="space-y-8">
             <div className="">
               <label
                 htmlFor="email"

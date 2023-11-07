@@ -1,3 +1,6 @@
+import { CartContext } from "@/context/stateContext";
+import { useContext } from "react";
+
 export const items: Item[] = [
   {
     id: 1,
@@ -15,31 +18,31 @@ export const items: Item[] = [
     id: 3,
     name: "Fudge",
     price: 6000,
-    image: "Fudge.svg",
+    image: "Fudge.png",
   },
   {
     id: 4,
     name: "Chocolate Box",
     price: 5000,
-    image: "Chocolate-Chip-Cookies.svg",
+    image: "Chocolate-Chip-Cookies.png",
   },
   {
     id: 5,
     name: "Tea",
     price: 6500,
-    image: "Hibiscus-Tea.svg",
+    image: "Hibiscus-Tea.png",
   },
   {
     id: 6,
     name: "Cupcakes",
     price: 10000,
-    image: "Mixed-Cupcakes.svg",
+    image: "Mixed-Cupcakes.png",
   },
   {
     id: 7,
     name: "Banana Cake",
     price: 4500,
-    image: "Banana-Loaf.svg",
+    image: "Banana-Loaf.png",
   },
   {
     id: 8,
@@ -49,9 +52,9 @@ export const items: Item[] = [
   },
   {
     id: 9,
-    name: "Wine",
+    name: "Red Wine",
     price: 10000,
-    image: "Muled-Wine.svg",
+    image: "",
   },
   {
     id: 10,
@@ -75,13 +78,13 @@ export const items: Item[] = [
     id: 13,
     name: "Spiced Honey",
     price: 7500,
-    image: "Spiced-Honey.svg",
+    image: "Spiced-Honey.png",
   },
   {
     id: 14,
     name: "Gummie Sweets",
     price: 7500,
-    image: "Gummy-Sweets.svg",
+    image: "Gummy-Sweets.png",
   },
   {
     id: 15,
@@ -89,44 +92,56 @@ export const items: Item[] = [
     price: 35000,
     image: "",
   },
+  {
+    id: 16,
+    name: "Chin Chin",
+    price: 2500,
+    image: "",
+  },
+  {
+    id: 17,
+    name: "Nuts",
+    price: 2500,
+    image: "",
+  },
 ];
 
 export const product: Product[] = [
   {
     name: "Keresimesi",
-    price: 178000,
+    price: 180500,
     image: "",
-    items: [1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15],
+    items: [1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15, 16, 17],
   },
   {
     name: "Yuletide",
-    price: 128000,
+    price: 130500,
     image: "",
-    items: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15],
+    items: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17],
   },
   {
     name: "Noel",
-    price: 123000,
+    price: 125500,
     image: "",
-    items: [1, 2, 3, 4, 5, 6, 7, 9, 12, 13, 14, 15],
+    items: [1, 2, 3, 4, 5, 6, 7, 9, 12, 13, 14, 15, 16, 17],
   },
   {
     name: "Navidad",
-    price: 80500,
+    price: 83000,
     image: "",
-    items: [1, 2, 3, 4, 5, 6, 7, 9, 12, 14],
+    items: [1, 2, 3, 4, 5, 6, 7, 9, 12, 14, 16, 17],
   },
   {
     name: "Natale",
-    price: 52000,
+    price: 54500,
     image: "",
-    items: [1, 3, 4, 6, 7, 9, 11],
+    items: [1, 3, 4, 6, 7, 9, 11, 16, 17],
   },
   {
     name: "Shona",
-    price: 39500,
+    price: 42000,
     image: "",
-    items: [1, 3, 4, 7, 11, 14],
+    items: [1, 3, 4, 7, 11, 14, 16, 17],
   },
 ];
 
@@ -144,7 +159,7 @@ export interface Product {
   items: number[];
 }
 
-export function getItemsData(product: Product[], items: Item[]): Product[] {
+export function getItemsData(items: Item[], products: any): Product[] {
   const itemsMap = new Map<number, Item>(items.map((item) => [item.id, item]));
 
   const getProductItemsData = (productData: Product): Item[] => {
@@ -159,12 +174,11 @@ export function getItemsData(product: Product[], items: Item[]): Product[] {
     return productItemsData.filter((item) => item !== null) as Item[];
   };
 
-  const productsWithData = product.map((productData) => ({
+  const productsWithData = products.map((productData: any) => ({
     ...productData,
     items: getProductItemsData(productData),
   }));
+
   //@ts-ignore
   return productsWithData;
 }
-
-export const productsWithData: Product[] = getItemsData(product, items);

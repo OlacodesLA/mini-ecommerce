@@ -18,8 +18,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
       "https://api.flutterwave.com/v3/payments",
       {
         tx_ref: "iro-lagos-" + customerId, // Append customer ID to the tx_ref
-        // amount: `${totalPrice}`,
-        amount: "100",
+        amount: `${totalPrice}`,
+        // amount: "100",
         currency: "NGN",
         redirect_url:
           process.env.NEXT_PUBLIC_NODE_ENV === "development"

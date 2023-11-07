@@ -1,22 +1,32 @@
 "use client";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { productsWithData } from "@/utils/products";
+import { Product, getItemsData, items } from "@/utils/products";
 import { findPriceByName } from "@/data";
+import { CartContext } from "@/context/stateContext";
 
 type Props = {
   params: { slug: string };
 };
 
 const Slug = ({ params }: Props) => {
+  //   useEffect(()=>{
+  // const products = localStorage.getItem(JSON.parse(cartData));
+  //   }
+  //   ,[])
+  const { products } = useContext(CartContext)!;
+
+  const productsWithData: Product[] = getItemsData(items, products);
+
   const product = productsWithData.find(
-    (product) => product.name.toLowerCase() === params.slug
+    (product: any) => product.name.toLowerCase() === params.slug
   );
 
   if (!product) {
     return <div>Product not found</div>;
   }
-  const priceName = findPriceByName(params.slug);
+  console.log(product);
+
   return (
     <div>
       <h1 className="text-center capitalize text-pink-800 font-bold text-2xl">
@@ -25,7 +35,7 @@ const Slug = ({ params }: Props) => {
       <p className="text-center font-medium text-sm py-1">
         Price:{" "}
         <span className="bg-pink-900 p-1 rounded-sm text-white">
-          ₦{priceName}
+          ₦{product.price}
         </span>{" "}
       </p>
       <p className="text-center font-medium text-sm mt-4">The pack includes</p>

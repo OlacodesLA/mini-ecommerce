@@ -21,3 +21,24 @@ export function verifyAPI(data: any) {
     data: data,
   });
 }
+
+export function emailAPI(
+  customerInfo: any,
+  shippingInfo: any,
+  totalPrice: any,
+  cartInfo: any,
+  createdAt: any
+) {
+  // console.log('look i got here');
+  return $({
+    url: "/api/mail",
+    method: "post",
+    data: {
+      customerInfo,
+      shippingInfo,
+      totalPrice,
+      cartInfo,
+      createdAt,
+    },
+  });
+}

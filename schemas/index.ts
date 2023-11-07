@@ -36,10 +36,8 @@ export const forgotPasswordSchema = yup.object().shape({
 
 export const shippingSchema = yup.object().shape({
   address: yup.string().required("Address is required."),
+  info: yup.string().required("Address is required."),
   city: yup.string().required("City is required."),
-  postalCode: yup
-    .string()
-    .matches(/^\d{5}$/, "Postal Code must be a 5-digit number")
-    .required("Postal Code is required."),
+
   country: yup.string().required("Country is required."),
 });

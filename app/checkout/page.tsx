@@ -5,10 +5,14 @@ import Image from "next/image";
 import money from "@/utils/money";
 import { CartContext } from "@/context/stateContext";
 import Secure from "@/components/secure";
-import { productsWithData } from "@/utils/products";
+import { Product, getItemsData, items } from "@/utils/products";
+import { textToDot } from "@/utils";
 
 export default function Checkout() {
-  const { cart } = useContext(CartContext)!;
+  const { cart, products } = useContext(CartContext)!;
+
+  const productsWithData: Product[] = getItemsData(items, products);
+
   return (
     <main className="flex flex-col items-center justify-between px-2">
       <div className="my-5">
@@ -44,7 +48,7 @@ export default function Checkout() {
                     >
                       <div className="w-full">
                         <div className=" bg-pink-300 font-bold flex w-full justify-center items-center h-[70px]  rounded-lg object-cover ">
-                          {name}
+                          {textToDot(name, 10)}
                         </div>
                       </div>
 
@@ -57,7 +61,7 @@ export default function Checkout() {
                         <div className="flex items-start justify-between w-full">
                           <div className="">
                             <h1 className="font-medium text-sm tl:text-lg text-slate-900 lg:text-sm">
-                              {item.name}
+                              {textToDot(name, 16)}
                             </h1>
                             <p className=" text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
                               {" "}

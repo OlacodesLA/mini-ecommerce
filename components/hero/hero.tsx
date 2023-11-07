@@ -21,7 +21,7 @@ const Hero = (props: Props) => {
             This Christmas, give the gift of delight. Our handpicked selection
             of quality products and unique packages will make your celebrations
             unforgettable. Discover incredible deals that will bring happiness
-            to your home.
+            to your Friends and Family.
           </p>
           <Link href="/shop" className="">
             <DefaultButton type="button" y="py-2.5" label="Shop Now" />

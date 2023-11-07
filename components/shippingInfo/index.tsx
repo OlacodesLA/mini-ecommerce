@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import TextField from "../inputs/text";
+import TextArea from "../inputs/textarea";
 import { useFormik } from "formik";
 import { shippingSchema } from "@/schemas";
 import { DefaultButton } from "../button";
@@ -28,7 +29,7 @@ const ShippingInfo = ({ onNextStep, onPrevStep }: Props) => {
     initialValues: {
       address: "",
       city: "",
-      postalCode: "",
+      info: "",
       country: "",
     },
     validationSchema: shippingSchema,
@@ -69,16 +70,6 @@ const ShippingInfo = ({ onNextStep, onPrevStep }: Props) => {
       />
       <TextField
         type="text"
-        placeholder="Postal Code"
-        name="postalCode"
-        handleChange={formik.handleChange}
-        handleBlur={formik.handleBlur}
-        value={formik.values.postalCode}
-        error={formik.errors.postalCode}
-        touched={formik.touched.postalCode}
-      />
-      <TextField
-        type="text"
         placeholder="Country"
         name="country"
         handleChange={formik.handleChange}
@@ -86,6 +77,16 @@ const ShippingInfo = ({ onNextStep, onPrevStep }: Props) => {
         value={formik.values.country}
         error={formik.errors.country}
         touched={formik.touched.country}
+      />
+      <TextArea
+        type="text"
+        placeholder="Additional Information"
+        name="info"
+        handleChange={formik.handleChange}
+        handleBlur={formik.handleBlur}
+        value={formik.values.info}
+        error={formik.errors.info}
+        touched={formik.touched.info}
       />
 
       <div className="flex justify-end">

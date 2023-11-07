@@ -6,7 +6,8 @@ import { IoTrash } from "react-icons/io5";
 import { HiMinus, HiPlus } from "react-icons/hi";
 import { default as money } from "../../utils/money";
 import Link from "next/link";
-import { productsWithData } from "@/utils/products";
+import { Product, getItemsData, items } from "@/utils/products";
+import { textToDot } from "@/utils";
 
 type Props = {};
 
@@ -15,12 +16,13 @@ const Cart = ({ showCart, setShowCart }: any) => {
     cart,
     totalQuantity,
     clearCart,
-
+    products,
     removeFromCart,
     incrementQuantity,
     decrementQuantity,
   } = useContext(CartContext)!;
 
+  const productsWithData: Product[] = getItemsData(items, products);
   return (
     <div className="bg-white h-screen">
       <div className="py-2 px-2">
@@ -61,7 +63,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
         <div className="mt-5">
           {cart &&
             cart.map((item) => {
-              const { name, quantity, price } = item;
+              const { name, quantity, price, items } = item;
               const product = productsWithData.find(
                 (product) => product.name.toLowerCase() === name.toLowerCase()
               );
@@ -78,7 +80,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
                     >
                       <div className="w-full">
                         <div className=" bg-pink-300 font-bold flex w-full justify-center items-center lg:h-[120px] tl:h-[134px] h-[134px] rounded-lg object-cover ">
-                          {name}
+                          {textToDot(name, 10)}
                         </div>
                       </div>
                       <div className="absolute right-1 top-1 blur-theme-effect bg-white/80 text-black text-xs px-1 rounded">
@@ -90,11 +92,10 @@ const Cart = ({ showCart, setShowCart }: any) => {
                         <div className="flex items-start justify-between w-full">
                           <div className="">
                             <h1 className="font-medium text-base tl:text-lg text-slate-900 lg:text-sm">
-                              {item.name}
+                              {textToDot(name, 10)}
                             </h1>
                             <p className=" text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
-                              {" "}
-                              {foundProductNames?.join(", ")}{" "}
+                              {items}
                             </p>
                           </div>
 

@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
+import { sendEmail } from "@/lib/email";
+import NikeReceiptEmail from "@/lib/confirmation";
+import { render } from "@react-email/render";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const body = await req.json();

@@ -4,7 +4,6 @@ import { onSnapshot, doc, getDoc, DocumentData } from "firebase/firestore";
 import { db } from "@/config/firebase";
 import React, { useEffect, useState } from "react";
 import { HiPaperClip } from "react-icons/hi";
-import { post } from "axios";
 
 type Props = {
   params: { slug: string };

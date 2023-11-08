@@ -18,6 +18,11 @@ const config: Config = {
       },
       colors: {
         primary: "#D8B982",
+        // gold: "#f8bf33",
+        gold: "#D8B982",
+        lightgold: "#f8bf33",
+        darkgold: "#d4992a",
+        light: "#D8B982",
       },
     },
     screens: {

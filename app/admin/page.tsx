@@ -114,7 +114,7 @@ export default function Admin() {
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                           <Link
                             href={`/admin/${id}`}
-                            className="text-pink-600 hover:text-pink-900"
+                            className="text-gold hover:text-pink-900"
                           >
                             View<span className="sr-only">{firstName}</span>
                           </Link>

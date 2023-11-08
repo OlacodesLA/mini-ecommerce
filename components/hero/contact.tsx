@@ -6,10 +6,10 @@ type Props = {};
 const Contact = (props: Props) => {
   return (
     <div className="w-auto">
-      <div className="inline-block  px-2 py-1 font-semibold bg-pink-200 rounded-full">
+      <div className="inline-block  px-2 py-1 font-semibold bg-gradient-to-r from-[#FEDB6B] to-gold rounded-full cursor-pointer">
         <div className="flex flex-wrap justify-start items-center lg:-m-1">
           <div className="w-auto p-1">
-            <Link className="text-sm " href="/contact">
+            <Link className="text-sm text-black" href="/contact">
               &#x1F44B; Get in touch with us.
             </Link>
           </div>

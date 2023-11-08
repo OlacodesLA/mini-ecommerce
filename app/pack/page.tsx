@@ -93,7 +93,9 @@ const CreatePack: React.FC<CreatePackProps> = () => {
   return (
     <div className="px-4">
       <div className="my-5">
-        <h1 className="text-2xl sm:text-4xl text-center font-bold ">Pack</h1>
+        <h1 className="text-2xl sm:text-4xl text-center font-bold text-gold ">
+          Pack
+        </h1>
         <p className="text-center">Create a pack</p>
       </div>
 
@@ -113,7 +115,7 @@ const CreatePack: React.FC<CreatePackProps> = () => {
               <div className="mb-4  w-full ">
                 <label
                   htmlFor="packName"
-                  className="block font-medium text-gray-700"
+                  className="block font-medium text-gold"
                 >
                   Pack Name:
                 </label>
@@ -134,7 +136,7 @@ const CreatePack: React.FC<CreatePackProps> = () => {
               </div>
             </div>
           </div>
-          <h3 className="text-lg text-center font-medium mb-2 text-pink-600">
+          <h3 className="text-lg text-center font-medium mb-2 text-gold">
             Select Items for the Pack
           </h3>
           <ul className="grid  justify-center items-center justify-self-center justify-items-center lg:gap-4 gap-2  xl:grid-cols-4 sm:grid-cols-3 grid-cols-2 mt-10">
@@ -142,9 +144,9 @@ const CreatePack: React.FC<CreatePackProps> = () => {
               const { id, name, image, price } = item;
 
               return (
-                <li key={id} className="mb-2">
+                <li key={id} className="mb-2 ">
                   <label htmlFor={name}>
-                    <div className="flex flex-col items-center space-x-2 cursor-pointer">
+                    <div className="flex flex-col items-center space-x-2 cursor-pointer text-black ">
                       {image ? (
                         <img
                           src={`/items/${image}`}
@@ -156,7 +158,7 @@ const CreatePack: React.FC<CreatePackProps> = () => {
                           {name}
                         </div>
                       )}
-                      <div className="text-center mt-2">
+                      <div className="text-center mt-2 text-white">
                         <p>₦{price}</p>
                       </div>
                       <input

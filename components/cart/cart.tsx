@@ -34,7 +34,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
               // onClick={onCartToggle}
               onClick={() => setShowCart(false)}
             >
-              <BsFillArrowLeftCircleFill className="w-5 h-5 text-slate-900 hover:text-pink-500 " />
+              <BsFillArrowLeftCircleFill className="w-5 h-5 text-slate-900 hover:text-gold " />
             </div>
             <div className="grid items-center">
               <h1 className="text-base font-medium text-slate-900">
@@ -79,7 +79,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
                       className={`relative rounded-lg h-20 w-[200px] hover:scale-105 transition-all duration-75 ease-in-out grid items-center`}
                     >
                       <div className="w-full">
-                        <div className=" bg-pink-300 font-bold flex w-full justify-center items-center lg:h-[120px] tl:h-[134px] h-[134px] rounded-lg object-cover ">
+                        <div className="text-black bg-gradient-to-r from-[#FEDB6B] to-[#D69C47] font-bold flex w-full justify-center items-center lg:h-[120px] tl:h-[134px] h-[134px] rounded-lg object-cover ">
                           {textToDot(name, 10)}
                         </div>
                       </div>
@@ -94,7 +94,7 @@ const Cart = ({ showCart, setShowCart }: any) => {
                             <h1 className="font-medium text-base tl:text-lg text-slate-900 lg:text-sm">
                               {textToDot(name, 10)}
                             </h1>
-                            <p className=" text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
+                            <p className="text-black  text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
                               {items}
                             </p>
                           </div>

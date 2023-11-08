@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <CartProvider>
-        <body className={`${inter.className} bg-green-900 `}>
+        <body className={`${inter.className} bg-green-950 text-white  `}>
           <Nav />
           {children}
           <Toaster

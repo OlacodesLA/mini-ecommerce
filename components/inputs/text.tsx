@@ -34,12 +34,12 @@ const TextField = ({
         className={`border ${
           error && touched
             ? "border-red-500 focus:border-red-500 border-2"
-            : "border-gray-500 focus:border-pink-600 border"
+            : "border-gray-500 focus:border-gold border"
         }   w-full h-[38px] text-sm text-black rounded-[6px] focus:outline-none  focus:ring-0  peer bg-gray-50  pl-4 placeholder:text-gray-700 `}
       />
       <label
         htmlFor={name}
-        className="text-[13px] text-slate-700 font-bold peer-focus:text-pink-600 after:content-['*'] after:ml-0.5 after:text-red-500"
+        className="text-[13px] text-slate-700 font-bold peer-focus:text-gold after:content-['*'] after:ml-0.5 after:text-red-500"
       >
         {placeholder}
       </label>

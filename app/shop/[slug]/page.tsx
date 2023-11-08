@@ -29,12 +29,12 @@ const Slug = ({ params }: Props) => {
 
   return (
     <div>
-      <h1 className="text-center capitalize text-pink-800 font-bold text-2xl">
+      <h1 className="text-center capitalize text-light font-bold text-2xl">
         {params.slug} Pack
       </h1>
       <p className="text-center font-medium text-sm py-1">
         Price:{" "}
-        <span className="bg-pink-900 p-1 rounded-sm text-white">
+        <span className="bg-black p-1 rounded-sm text-white">
           ₦{product.price}
         </span>{" "}
       </p>
@@ -45,7 +45,7 @@ const Slug = ({ params }: Props) => {
           const { name, image, price } = item;
           return (
             <li key={item.id}>
-              <div className="my-3 cursor-pointer group ">
+              <div className="my-3 cursor-pointer group text-black">
                 {image ? (
                   <img
                     src={`/items/${image}`}
@@ -58,7 +58,7 @@ const Slug = ({ params }: Props) => {
                   </div>
                 )}
 
-                <div className="text-center mt-2">
+                <div className="text-center mt-2 text-white">
                   <p>₦{price}</p>
                 </div>
               </div>

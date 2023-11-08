@@ -22,8 +22,8 @@ const Pack = ({ name, price }: Props) => {
   return (
     <div key={name} className="my-3 cursor-pointer group ">
       <Link href={`/shop/${name.toLowerCase()}`}>
-        <div className="rounded-full text-lg text-center flex justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-pink-300">
-          {textToDot(name, 10)}
+        <div className="text-black rounded-full text-lg text-center flex justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-gradient-to-r from-[#FEDB6B] to-[#D69C47]">
+          {textToDot(name, 10)} pack
         </div>
       </Link>
       <div className="text-center mt-2">

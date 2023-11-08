@@ -9,7 +9,7 @@ const NoPack = ({ setCreatePack }: Props) => {
     <div>
       <p className="text-center text-base">
         You have no pack.
-        <span className="text-pink-500" onClick={() => setCreatePack(true)}>
+        <span className="text-gold" onClick={() => setCreatePack(true)}>
           Create pack.
         </span>
       </p>

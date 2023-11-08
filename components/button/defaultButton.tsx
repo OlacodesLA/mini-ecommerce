@@ -24,9 +24,9 @@ const DefaultButton = ({
       disabled={disable ? isLoading || disable : isLoading}
       className={` ${
         y ? y : "py-1.5"
-      } relative inline-flex items-center px-8  overflow-hidden text-sm font-medium text-pink-600 border-2 border-pink-600 rounded-md hover:text-white group hover:bg-gray-50`}
+      } relative inline-flex items-center px-8  overflow-hidden text-sm font-medium text-gold border-2 border-gold rounded-md hover:text-white group hover:bg-gray-50`}
     >
-      <span className="absolute left-0 block w-full h-0 transition-all bg-pink-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+      <span className="absolute left-0 block w-full h-0 transition-all bg-gold opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
       <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-4 ease">
         <svg
           className="w-4 h-4"

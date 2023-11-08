@@ -26,7 +26,7 @@ export default function Checkout() {
           <Stepper />
         </div>
         <div className="w-full lg:mb-5 mb-10">
-          <p className="text-lg font-bold text-pink-800">Cart</p>
+          <p className="text-lg font-bold text-gold">Cart</p>
           {cart &&
             cart.map((item) => {
               const { name, quantity, price } = item;
@@ -47,7 +47,7 @@ export default function Checkout() {
                       className={`relative rounded-lg h-20 w-[200px] hover:scale-105 transition-all duration-75 ease-in-out grid items-center`}
                     >
                       <div className="w-full">
-                        <div className=" bg-pink-300 font-bold flex w-full justify-center items-center h-[70px]  rounded-lg object-cover ">
+                        <div className="text-black bg-gradient-to-r from-[#FEDB6B] to-[#D69C47] font-bold flex w-full justify-center items-center h-[70px]  rounded-lg object-cover ">
                           {textToDot(name, 10)}
                         </div>
                       </div>
@@ -60,21 +60,21 @@ export default function Checkout() {
                       <div className="grid items-center w-full leading-none">
                         <div className="flex items-start justify-between w-full">
                           <div className="">
-                            <h1 className="font-medium text-sm tl:text-lg text-slate-900 lg:text-sm">
+                            <h1 className="font-medium text-white text-sm tl:text-lg  lg:text-sm">
                               {textToDot(name, 16)}
                             </h1>
-                            <p className=" text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
+                            <p className="text-gray-200 text-[8.5px] ms:text-[10px] md:text-[12px] pr-1 md:pr-5">
                               {" "}
                               {foundProductNames?.join(", ")}{" "}
                             </p>
                           </div>
                           <div className="flex flex-col justify-between h-full ">
                             <div className="flex justify-center">
-                              <div className="w-7 h-7 flex items-center  rounded-lg justify-center border-gray-400 border">
+                              <div className="w-7 h-7 flex items-center  test-white rounded-lg justify-center border-gray-400 border">
                                 {quantity}
                               </div>
                             </div>
-                            <h1 className="text-sm tl:text-lg mt-4 text-slate-900 font-medium">
+                            <h1 className="text-sm tl:text-lg mt-4 text-white font-medium">
                               &#x20A6;{money(price * quantity)}
                             </h1>
                           </div>
@@ -88,8 +88,8 @@ export default function Checkout() {
 
           <div className="w-full">
             <div className="flex w-full justify-between py-4 border-b  border-gray-300">
-              <div className="text-black  font-bold">SubTotal</div>
-              <div className="text-gray-700 0">
+              <div className="text-white  font-bold">SubTotal</div>
+              <div className="text-gray-200 0">
                 {cart &&
                   cart
                     .reduce(
@@ -103,8 +103,8 @@ export default function Checkout() {
               </div>
             </div>
             <div className="flex w-full justify-between py-4 border-b  border-gray-300">
-              <div className="text-black  font-bold">Total</div>
-              <div className="text-gray-700 font-bold">
+              <div className="text-white  font-bold">Total</div>
+              <div className="text-gray-200 font-bold">
                 {cart &&
                   cart
                     .reduce(

@@ -17,7 +17,9 @@ const Shop = (props: Props) => {
   return (
     <div>
       <div className="my-5">
-        <h1 className="text-2xl sm:text-4xl text-center font-bold ">Shop</h1>
+        <h1 className="text-2xl sm:text-4xl text-center font-bold text-light">
+          Shop
+        </h1>
         <p className="text-center">Select packages</p>
       </div>
 
@@ -32,14 +34,14 @@ const Shop = (props: Props) => {
             (product: any) => product.name
           );
           return (
-            <div key={name} className="my-3 cursor-pointer group ">
+            <div key={name} className="my-3 cursor-pointer group text-black">
               <Link href={`/shop/${name.toLowerCase()}`}>
-                <div className="rounded-full text-lg flex justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-pink-300">
+                <div className="rounded-full text-lg flex justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-gradient-to-r from-[#FEDB6B] to-[#D69C47]">
                   {textToDot(name, 10)}
                 </div>
               </Link>
-              <div className="text-center mt-2">
-                <p>₦{price}</p>
+              <div className="text-center mt-2 text-white">
+                <p className="text-white">₦{price}</p>
                 <button
                   onClick={() =>
                     addToCart({

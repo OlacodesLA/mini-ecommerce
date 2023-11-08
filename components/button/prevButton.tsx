@@ -14,7 +14,7 @@ const PreviousButton = ({ type, isLoading, label, disable, click }: Props) => {
       type={type}
       onClick={click}
       disabled={disable ? isLoading || disable : isLoading}
-      className="relative inline-flex items-center px-8 py-1.5 overflow-hidden text-sm font-medium text-pink-600 border-none border-pink-600 rounded-md hover:text-pink-600 group hover:bg-gray-50"
+      className="relative inline-flex items-center px-8 py-1.5 overflow-hidden text-sm font-medium text-gold border-none border-gold rounded-md hover:text-gold group hover:bg-gray-50"
     >
       <span className="absolute left-0 block w-full h-0 transition-all opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
       <span className="absolute left-0 flex items-center justify-end w-10 h-10 duration-300 transform -translate-x-full group-hover:-translate-x-4 ease">

@@ -22,7 +22,7 @@ const Packs = ({ setCreatePack }: Props) => {
               );
             })}
           <li>
-            <div className="rounded-full  flex flex-col justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-pink-300">
+            <div className="rounded-full  flex flex-col justify-center items-center w-40 h-40 font-bold group-hover:bg-pink-500 bg-gradient-to-r from-[#FEDB6B] to-[#D69C47]">
               <div className="text-4xl leading-3">+</div>
             </div>
             <div className="text-center mt-8">

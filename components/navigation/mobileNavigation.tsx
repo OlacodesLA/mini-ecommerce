@@ -11,12 +11,12 @@ import {
 import { usePathname } from "next/navigation";
 
 type Props = {};
-const activeIconClass = "text-2xl text-green-900 ";
-const iconClass = "text-2xl text-gray-800";
+const activeIconClass = "text-2xl text-gold ";
+const iconClass = "text-2xl text-white";
 const MobileNavigation = (props: Props) => {
   const pathname = usePathname();
   return (
-    <div className="fixed w-full left-0 bottom-0 bg-pink-100 py-4 m z-40 ">
+    <div className="fixed w-full left-0 bottom-0 bg-green-950 py-4 m z-40 ">
       <div className="flex w-full px-4 justify-between items-center  ">
         {Links.map((a: any) => {
           return (
@@ -25,7 +25,7 @@ const MobileNavigation = (props: Props) => {
                 <button
                   className={` ${
                     pathname === a.href
-                      ? "text-pink-600 after:w-2 after:left-1/2  after:-translate-x-[50%] after:flex after:justify-center after:items-center  after:absolute after:content-['']  after:h-2 after:rounded-full after:bg-pink-600 after:mt-2"
+                      ? "text-gold after:w-2 after:left-1/2  after:-translate-x-[50%] after:flex after:justify-center after:items-center  after:absolute after:content-['']  after:h-2 after:rounded-full after:bg-gradient-to-r from-[#FEDB6B] to-[#D69C47] after:mt-2"
                       : "text-gray-600"
                   }`}
                 >

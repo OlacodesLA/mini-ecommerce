@@ -13,9 +13,9 @@ const Hero = (props: Props) => {
           <div className="w-auto">
             <Contact />
           </div>
-          <h1 className="text-4xl ms:text-5xl sm:text-6xl lg:text-7xl font-bold text-start font-charm ">
+          <h1 className="text-4xl ms:text-5xl sm:text-6xl  lg:text-7xl font-bold  text-start font-charm ">
             Unwrap the joy of <br />
-            <span className="text-pink-600"> Christmas</span>
+            <span className="text-red-500"> Christmas</span>
           </h1>
           <p className=" text-base md:text-lg">
             This Christmas, give the gift of delight. Our handpicked selection
@@ -29,7 +29,7 @@ const Hero = (props: Props) => {
         </div>
       </div>
       <div className="md:pt-0 pt-10">
-        <img src="/hero.png" className="w-[700px]" alt="h" />
+        <img src="/hero-png.png" className="w-[700px]" alt="h" />
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ const Nav = (props: Props) => {
                 <span className=" font-bold text-center">Lagos</span>
               </div> */}
 
-              <img src="/logo.png" className="w-16 h-16" alt="Iro Lagos" />
+              <img src="/logo.png" className="w-20 h-20" alt="Iro Lagos" />
             </Link>
 
             {/* Desktop View */}
@@ -55,7 +55,7 @@ const Nav = (props: Props) => {
               <div onClick={() => setShowCart(!showCart)} className="">
                 <div className="relative">
                   <AiOutlineShopping className="text-[24px] right-4  w-10  " />
-                  <div className="absolute w-3 h-3 top-0 right-1 rounded-full bg-red-500 text-[12px] flex items-center justify-center text-white">
+                  <div className="absolute w-3 h-3 top-0 right-1 rounded-full bg-red-700 text-[12px] flex items-center justify-center text-white">
                     {totalQuantity}
                   </div>
                 </div>

@@ -77,7 +77,7 @@ const Stepper: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center bg-white py-10 px-4 rounded-md">
+    <div className="flex flex-col justify-center items-center bg-gray-100 py-10 px-4 rounded-md">
       <div className="flex w-full justify-between">
         {steps.map((step, i) => (
           <div

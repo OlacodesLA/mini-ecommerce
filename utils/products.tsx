@@ -24,7 +24,7 @@ export const items: Item[] = [
     id: 4,
     name: "Chocolate Box",
     price: 5000,
-    image: "Chocolate-Chip-Cookies.png",
+    image: "",
   },
   {
     id: 5,

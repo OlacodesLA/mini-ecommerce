@@ -109,37 +109,37 @@ export const items: Item[] = [
 export const product: Product[] = [
   {
     name: "Keresimesi",
-    price: 180500,
+    price: 183000,
     image: "",
     items: [1, 2, 3, 4, 5, 6, 7, 10, 12, 13, 14, 15, 16, 17],
   },
   {
     name: "Yuletide",
-    price: 130500,
+    price: 133000,
     image: "",
     items: [1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17],
   },
   {
     name: "Noel",
-    price: 125500,
+    price: 128000,
     image: "",
     items: [1, 2, 3, 4, 5, 6, 7, 9, 12, 13, 14, 15, 16, 17],
   },
   {
     name: "Navidad",
-    price: 83000,
+    price: 85500,
     image: "",
     items: [1, 2, 3, 4, 5, 6, 7, 9, 12, 14, 16, 17],
   },
   {
     name: "Natale",
-    price: 54500,
+    price: 57000,
     image: "",
     items: [1, 3, 4, 6, 7, 9, 11, 16, 17],
   },
   {
     name: "Shona",
-    price: 42000,
+    price: 44500,
     image: "",
     items: [1, 3, 4, 7, 11, 14, 16, 17],
   },

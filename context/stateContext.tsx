@@ -76,13 +76,10 @@ export function CartProvider({ children }: CartProviderProps) {
       setPacks(initialPacks);
 
       const storedProducts = localStorage.getItem("products");
-      const initialProducts = storedProducts
-        ? JSON.parse(storedProducts)
-        : product;
+      const initialProducts = storedProducts ? product : product;
 
       setProducts(initialProducts);
     }
-    localStorage.removeItem("products");
   }, []);
 
   const saveCartToLocalStorage = (cartData: CartItem[]) => {

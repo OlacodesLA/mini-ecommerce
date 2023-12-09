@@ -82,6 +82,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
       setProducts(initialProducts);
     }
+    localStorage.removeItem("products");
   }, []);
 
   const saveCartToLocalStorage = (cartData: CartItem[]) => {
